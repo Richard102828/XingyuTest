@@ -21,6 +21,10 @@ android {
     dataBinding {
         enabled = true
     }
+
+    compileOptions {
+        encoding "UTF-8"
+    }
 }
 
 dependencies {

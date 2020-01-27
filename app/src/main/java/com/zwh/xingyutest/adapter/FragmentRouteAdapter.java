@@ -2,6 +2,7 @@ package com.zwh.xingyutest.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -35,17 +36,17 @@ public class FragmentRouteAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == TYPE_Apply) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.fragment_route_applylist,
+            View apply = LayoutInflater.from(mContext).inflate(R.layout.fragment_route_applylist,
                     parent, false);
-            return new ApplyViewHolder(view);
+            return new ApplyViewHolder(apply);
         }else if (viewType == TYPE_My) {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.fragment_route_my,
+            View my = LayoutInflater.from(mContext).inflate(R.layout.fragment_route_my,
                     parent, false);
-            return new MyViewHolder(view);
+            return new MyViewHolder(my);
         }else {
-            View view = LayoutInflater.from(mContext).inflate(R.layout.fragment_route_all,
+            View all = LayoutInflater.from(mContext).inflate(R.layout.fragment_route_all,
                     parent, false);
-            return new AllViewHolder(view);
+            return new AllViewHolder(all);
         }
     }
 
@@ -68,7 +69,6 @@ public class FragmentRouteAdapter extends RecyclerView.Adapter {
             myViewHolder.recyclerView.setAdapter(myAdapter);
             myViewHolder.recyclerView.setLayoutManager(manager);
             myViewHolder.recyclerView.addItemDecoration(new ItemDecoration(60));
-
         }else {
             //do
             AllViewHolder allViewHolder = (AllViewHolder) holder;

@@ -1,7 +1,9 @@
 package com.zwh.xingyutest.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -47,6 +49,28 @@ public class FragmentRouteMyAdapter extends RecyclerView.Adapter {
         holder1.rcvApply.setAdapter(itemAdapter);
         holder1.rcvApply.setLayoutManager(manager);
         holder1.rcvApply.addItemDecoration(new ItemDecoration(20));
+        holder1.rcvApply.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+                if (e.getAction() == MotionEvent.ACTION_DOWN || e.getAction() ==
+                        MotionEvent.ACTION_MOVE) {
+                    rv.getParent().requestDisallowInterceptTouchEvent(true);
+                } else if (e.getAction() == MotionEvent.ACTION_UP){
+                    rv.getParent().requestDisallowInterceptTouchEvent(false);
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
     }
 
     @Override
